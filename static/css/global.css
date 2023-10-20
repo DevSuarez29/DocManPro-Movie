@@ -1,0 +1,17 @@
+/* Oculta el logo oscuro por defecto */
+.logo{
+    width: 45px;
+}
+.dark-mode-item {
+    display: none;
+  }
+  
+  /* Muestra el logo oscuro cuando data-bs-theme="dark" está presente en el <body> */
+  [data-bs-theme="dark"] .dark-mode-item {
+    display: block;
+  }
+  
+  /* Opcional: oculta el logo claro cuando data-bs-theme="dark" está presente en el <body> */
+  [data-bs-theme="dark"] .light-mode-item {
+    display: none;
+  }
