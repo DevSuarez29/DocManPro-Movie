@@ -5,4 +5,61 @@
     {% block header %}
         {% include "_header.html" %}
     {% endblock %}
+    <div id="content" class="m-2 px-2 mobile:px-1 mt-6">
+        <p class="mb-2 fs-1">Most Popular Categories</p>
+        <div class="row">
+            {% for movie in movies %}
+                <div class="col-lg-2 col-sm-4">
+                    <div class="card preview mb-1">
+                      <a href="movie/{{ movie.id }}">
+                        <div class="image-container">
+                            <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster" style="width: 100%; height: auto;">
+                            <div class="overlay">
+                                <div class="description">
+                                    {{ movie.description|slice:":100" }} ...
+                                </div>
+                            </div>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:6 %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+        <nav aria-label="Page navigation" class="mt-2">
+        {% with movies.number as current_page %}
+        {% with movies.paginator.num_pages as total_pages %}
+          {% with current_page|add:-1 as start_page %}
+            {% with current_page|add:2 as end_page %}
+            <ul class="pagination justify-content-center">
+                <li class="page-item{% if current_page == 1 %} disabled{% endif %}">
+                  <a class="page-link" href="?page=1" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left text-900 fs-3"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></a>
+                </li>
+                <li class="page-item{% if current_page == 1 %} disabled{% endif %}">
+                  <a class="page-link" href="?page={{ current_page|add:-1 }}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left text-900 fs-3"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+                </li>
+                {% for i in movies.paginator.page_range %}
+                  {% if i >= start_page and i <= end_page %}
+                    <li class="page-item{% if current_page == i %} active{% endif %}">
+                      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                <li class="page-item{% if current_page == total_pages %} disabled{% endif %}">
+                  <a class="page-link" href="?page={{ current_page|add:1 }}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right text-900 fs-3"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                </li>
+                <li class="page-item{% if current_page == total_pages %} disabled{% endif %}">
+                  <a class="page-link" href="?page={{ total_pages }}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right text-900 fs-3"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg></a>
+                </li>
+              </ul>
+            {% endwith %}
+          {% endwith %}
+        {% endwith %}
+      {% endwith %}
+    </nav>
+        
+    </div>
+    
 {% endblock %}

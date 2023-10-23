@@ -1,6 +1,5 @@
 {% load static %}
-<header class="navbar-light navbar-sticky header-static navbar-sticky-on">
-	<!-- Nav START -->
+<header id="headtop" class="navbar-light navbar-sticky header-static navbar-sticky-on" >
 	<nav class="navbar navbar-expand-xl">
 		<div class="container-fluid px-3 px-xl-5">
 			<!-- Logo START -->
@@ -48,7 +47,7 @@
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
+						<a class="nav-link dropdown-toggle active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Peliculas</a>
 						<ul class="dropdown-menu" aria-labelledby="demoMenu">
 							<li> <a class="dropdown-item active" href="index.html">Home Default</a></li>
 							<li> <a class="dropdown-item" href="index-2.html">Home Education</a></li>
@@ -66,7 +65,7 @@
 
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Series</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
@@ -176,11 +175,11 @@
 
 					<!-- Nav item 3 Account -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accounts</a>
+						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Novelas</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-tie fa-fw me-1"></i>Instructor</a>
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-tie fa-fw me-1"></i>Mangas</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
 									<li> <a class="dropdown-item" href="instructor-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
 									<li> <a class="dropdown-item" href="instructor-manage-course.html"><i class="bi bi-basket-fill fa-fw me-1"></i>Courses</a> </li>
@@ -247,7 +246,7 @@
 
 					<!-- Nav item 4 Megamenu-->
 					<li class="nav-item dropdown dropdown-fullwidth">
-						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Megamenu</a>
+						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mangas</a>
 						<div class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
 							<div class="row p-4">
 								<!-- Dropdown column item -->
@@ -410,7 +409,7 @@
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
 						<form class="position-relative">
-							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search {{ total_movies }} videos ... " aria-label="Search">
 							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
 								<i class="fas fa-search fs-6 "></i>
 							</button>
@@ -427,20 +426,7 @@
 					<img class="avatar-img rounded-circle" src="{% static 'img/img/no-avatar.png' %}" alt="avatar" style=" width: 30px; ">
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-					<!-- Profile info -->
-					<li class="px-3 mb-3">
-						<div class="d-flex align-items-center">
-							<!-- Avatar -->
-							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="{% static 'img/img/no-avatar.png' %}" alt="avatar" style=" width: 30px; ">
-							</div>
-							<div>
-								<a class="h6" href="#">Lori Ferguson</a>
-								<p class="small m-0">example@gmail.com</p>
-							</div>
-						</div>
-					</li>
-					<li> <hr class="dropdown-divider"></li>
+
 					<!-- Links -->
 					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>

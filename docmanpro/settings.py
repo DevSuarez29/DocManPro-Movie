@@ -38,11 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #terceros
+    'coreapi',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    #apps
     'app.movie',
-    'app.FrontEnd'
+    'app.FrontEnd',
+    'app.api'
 ]
 
 MIDDLEWARE = [
+    'app.api.middleware.ForceJsonResponseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -118,6 +129,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+#REST_FRAMEWORK = {
+#    'DEFAULT_PERMISSION_CLASSES': [
+#        'rest_framework.permissions.IsAuthenticated',
+#    ]
+#}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -129,3 +146,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}

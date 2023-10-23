@@ -1,3 +1,4 @@
+import os
 from django.db import models
 
 class Genre(models.Model):
@@ -23,13 +24,19 @@ class Channel(models.Model):
         verbose_name = 'Canal'
         verbose_name_plural = 'Canales'
 
+def upload_movie_poster(instance, filename):
+    # Genera una ruta única para guardar cada archivo de póster
+    ext = filename.split('.')[-1]
+    filename = f'{instance.title}_{instance.id}.{ext}'
+    return os.path.join('static/img/movie_posters/', filename)
+
 class Movie(models.Model):
     title = models.CharField(max_length=255, verbose_name='Título')
     release_date = models.DateField(verbose_name='Fecha de Lanzamiento')
     genre = models.ManyToManyField(Genre, verbose_name='Géneros')
-    url_movie = models.URLField(max_length=200, verbose_name='URL de la pelicula')
+    url_movie = models.URLField(max_length=200, verbose_name='URL de la película')
     description = models.TextField(verbose_name='Descripción')
-    poster = models.ImageField(upload_to='img/movie_posters/', verbose_name='Póster')
+    poster = models.CharField(max_length=200, verbose_name='Póster')
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Registro')
     channel = models.ForeignKey(Channel, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Canal Relacionado')
 
