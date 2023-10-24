@@ -11,7 +11,7 @@
             {% for movie in movies %}
                 <div class="col-lg-2 col-sm-4">
                     <div class="card preview mb-1">
-                      <a href="movie/{{ movie.id }}">
+                      <a href="movie/{{ movie.slug }}">
                         <div class="image-container">
                             <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster" style="width: 100%; height: auto;">
                             <div class="overlay">

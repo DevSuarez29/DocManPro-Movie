@@ -35,7 +35,8 @@ def movie_detail(request, movie_id):
     Logo = 'img/img/Logo.png'
     title = "DocManPro - Distribución Online de Cine, Musica, Artes y Noticias"
     nombre = "Guest"
-    movie = Movie.objects.get(id=movie_id)
+    genres = Genre.objects.all()[:5]
+    movie = Movie.objects.get(slug=movie_id)
     total_movies = Movie.objects.all().count()
 
     return render(request, 'page_movie.html', {
@@ -43,5 +44,6 @@ def movie_detail(request, movie_id):
         'title': title,
         'nombre': nombre, 
         'movie': movie,
+        'genres': genres,
         'total_movies':total_movies 
     })

@@ -1,5 +1,6 @@
 import os
 from django.db import models
+from django.utils.text import slugify
 
 class Genre(models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre del Género')
@@ -39,6 +40,17 @@ class Movie(models.Model):
     poster = models.CharField(max_length=200, verbose_name='Póster')
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Registro')
     channel = models.ForeignKey(Channel, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Canal Relacionado')
+    slug = models.SlugField(unique=True, max_length=255, verbose_name='Slug', blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)  # Utiliza slugify para crear el slug
+            original_slug = self.slug
+            count = 1
+            while Movie.objects.filter(slug=self.slug).exclude(id=self.id).exists():
+                self.slug = f"{original_slug}-{count}"
+                count += 1
+        super(Movie, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

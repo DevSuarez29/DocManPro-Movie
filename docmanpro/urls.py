@@ -25,7 +25,7 @@ from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('', home, name='home'),
-    path('movie/<int:movie_id>/', movie_detail, name='movie_detail'),
+    path('movie/<movie_id>/', movie_detail, name='movie_detail'),
     path('admin/', admin.site.urls),
     path('api/', include(urls)),
     path('docs/', include_docs_urls(title='Documentacion API')),
